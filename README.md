@@ -63,7 +63,16 @@ Available variables are listed below along with default values (see `defaults\ma
 
 Example
 ---
+Deploy
 
+```bash
+cd /root/.ansible/roles
+git clone https://github.com/skymyyang/ansible-minio-cluster-install.git
+mv ansible-minio-cluster-install skymyyang.minio
+cd skymyyang.minio
+cd test
+ansible-playbook site.yml -i hosts
+```
 
 License
 -------
