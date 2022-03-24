@@ -1,0 +1,24 @@
+---
+- name: Install and configure Minio Server
+  hosts: minio
+  become: true
+  gather_facts: true
+  roles:
+    - role: ricsanfre.minio
+      minio_root_user: "minioadmin"
+      minio_root_password: "minioadmin"
+      minio_enable_tls: false
+      minio_server_datadirs:
+        - /data1/export1
+        - /data1/export2
+      minio_server_cluster_nodes:
+        - 'http://cnode{1...4}/data1/export{1...2}'
+
+
+
+# export MINIO_ROOT_USER=minioadmin
+# export MINIO_ROOT_PASSWORD=minioadmin
+# mkdir /data1/export1
+# mkdir /data1/export2
+# minio server --console-address :9001 http://cnode1/data1/export1 http://cnode1/data1/export2 http://cnode2/data1/export1 http://cnode2/data1/export2 http://cnode3/data1/export1 http://cnode3/data1/export2 http://cnode4/data1/export1 http://cnode4/data1/export2
+# minio server --console-address :9001 http://cnode{1...4}/data1/export{1...2}
