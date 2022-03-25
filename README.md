@@ -13,6 +13,8 @@ None
 Kernel tweaks
 ------------
 
+PS: `https://github.com/minio/minio/tree/master/docs/deployment/kernel-tuning`
+
 ```shell
 chmod +x kernel-tuning.sh
 bash kernel-tuning.sh
