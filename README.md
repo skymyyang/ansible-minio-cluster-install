@@ -9,6 +9,23 @@ Requirements
 
 None
 
+
+Kernel tweaks
+------------
+
+```shell
+chmod +x kernel-tuning.sh
+bash kernel-tuning.sh
+cat /sys/kernel/mm/transparent_hugepage/enabled
+echo madvise | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+vim /etc/default/grub
+
+GRUB_CMDLINE_LINUX="crashkernel=auto resume=/dev/mapper/rl-swap rd.lvm.lv=rl/root rd.lvm.lv=rl/swap transparent_hugepage=madvise"
+
+grub2-mkconfig -o /boot/grub2/grub.cfg
+reboot
+```
+
 Role Variables
 --------------
 
